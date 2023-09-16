@@ -77,7 +77,7 @@ void send_all(int temp, char *str)
 
 void fatal()
 {
-	write(2, "Fatal Error\n", strlen("Fatal Error\n"));
+	write(2, "Fatal error\n", strlen("Fatal error\n"));
 	exit(1);
 }
 
@@ -95,7 +95,7 @@ int main(int argc, char **argv)
 	bzero(&servaddr, sizeof(servaddr));
 
 	servaddr.sin_family = AF_INET;
-	servaddr.sin_addr.s_addr = htonl(2130706433); // 127.0.0.1
+	servaddr.sin_addr.s_addr = htonl(2130706433);
 	servaddr.sin_port = htons(atoi(argv[1]));
 
 	if ((bind(sockfd, (const struct sockaddr *)&servaddr, sizeof(servaddr))) != 0)
