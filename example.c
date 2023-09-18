@@ -7,7 +7,7 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 
-int sockfd, connfd, max_fd;
+int sockfd, connfd, maxfd;
 struct sockaddr_in servaddr, cli;
 
 socklen_t len;
@@ -68,7 +68,7 @@ char *str_join(char *buf, char *add)
 
 void send_all(int temp, char *str)
 {
-	for (int fd = 0; fd <= max_fd; fd++)
+	for (int fd = 0; fd <= maxfd; fd++)
 	{
 		if (FD_ISSET(fd, &write_fds) && fd != temp)
 			send(fd, str, strlen(str), 0);
@@ -104,14 +104,14 @@ int main(int argc, char **argv)
 		fatal();
 	FD_ZERO(&fds);
 	FD_SET(sockfd, &fds);
-	max_fd = sockfd;
+	maxfd = sockfd;
 
 	while (1)
 	{
 		read_fds = write_fds = fds;
-		if (select(max_fd + 1, &read_fds, &write_fds, 0, 0) < 0)
+		if (select(maxfd + 1, &read_fds, &write_fds, 0, 0) < 0)
 			fatal();
-		for (int fd = 0; fd <= max_fd; fd++)
+		for (int fd = 0; fd <= maxfd; fd++)
 		{
 			if (!FD_ISSET(fd, &read_fds))
 				continue;
@@ -121,8 +121,8 @@ int main(int argc, char **argv)
 				connfd = accept(sockfd, (struct sockaddr *)&cli, &len);
 				if (connfd < 0)
 					fatal();
-				if (max_fd < connfd)
-					max_fd = connfd;
+				if (maxfd < connfd)
+					maxfd = connfd;
 				_usr[connfd] = client++;
 				_msg[connfd] = NULL;
 				sprintf(send_info, "server: client %d just arrived\n", _usr[connfd]);
