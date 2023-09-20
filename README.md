@@ -1,6 +1,7 @@
-# 42KL-EXAM-RANK06
+# 42KL-Exam-Rank06
 
 mini version of the 42 project 'webserv'.
+
 the main focus of this exam is to test your knowledge of sockets and how you communicate between them.
 
 # Expected File
