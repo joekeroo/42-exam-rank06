@@ -1,6 +1,6 @@
 # 42KL-Exam-Rank06
 
-mini version of the 42 project 'webserv'.
+mini version of the 42 project [webserv](https://github.com/joekeroo/42KL-webserv).
 
 the main focus of this exam is to test your knowledge of sockets and how you communicate between them.
 
