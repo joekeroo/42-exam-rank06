@@ -1,4 +1,4 @@
-# 42KL-Exam-Rank06
+# 42-Exam-Rank06
 
 mini version of the 42 project [webserv](https://github.com/joekeroo/42KL-webserv).
 
